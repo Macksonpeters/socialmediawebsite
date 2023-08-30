@@ -13,13 +13,17 @@ import { useNavigate } from "react-router-dom";
 const App = () => {
   const userName = useSelector((store) => store.appReducer.name);
   const navigate = useNavigate();
+  const token = "86134fdad6b04e31823ac5fb4f187815";
 
   const {
     data: dataA,
     isFetching: isFetchingA,
     isLoading: isLoadingA,
     error: errorA,
-  } = useApiGet("FetchNews", "https://newsapi.org/v2/top-headlines?country=us");
+  } = useApiGet(
+    "FetchNews",
+    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${token}`
+  );
   // console.log(dataA, errorA);
   // let Data = dataA?.data?.articles;
 
@@ -30,7 +34,7 @@ const App = () => {
     error: errorB,
   } = useApiGet(
     "FetchNewsFromNigeria",
-    "https://newsapi.org/v2/top-headlines?country=ng"
+    `https://newsapi.org/v2/top-headlines?country=ng&apiKey=${token}`
   );
   console.log(dataB, errorB);
 
