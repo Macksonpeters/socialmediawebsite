@@ -2,16 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const useApiGet = (queryKey: string, endpoint: string) => {
-  const token = "86134fdad6b04e31823ac5fb4f187815";
-
   const fetchGetReq = () => {
     try {
-      return axios.get(endpoint, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      return axios.get(endpoint);
     } catch (error) {
       throw error;
     }
